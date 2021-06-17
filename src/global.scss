@@ -1,0 +1,174 @@
+:root {
+    --color-primary: #845cd6;
+    --color-white-alpha10: rgba(255, 255, 255, 0.1);
+    --color-black-alpha20: rgba(0, 0, 0, 0.2);
+    --color-bg: rgb(14, 14, 20);
+    --color-text: #fff;
+    --color-danger-400: #DC4146;
+    --color-warning-400: #FEC134;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-size: 12px;
+    overflow-x: hidden;
+}
+
+.header {
+    height: 10vh;
+    background-color: hsl(240, 20%, 5%);
+}
+
+.navbar {
+    height: inherit;
+    width: 90%;
+    max-width: 600px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__info-container {
+        height: inherit;
+        display: flex;
+        position: relative;
+        
+        p {
+            display: flex;
+            align-items: center;
+        }
+
+        span {
+            font-size: 1rem;
+            height: 2rem;
+            width: 2rem;
+            display: grid;
+            place-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-left: 0.5em;
+            font-weight: 600;
+            color: var(--color-warning-400);
+        }
+
+        // z-index: 99;
+        .del-btn {
+            width: 100%;
+            position: absolute;
+            top: 0%;
+            right: 0%;
+            z-index: -1;
+            transform: translateX(0%);
+            font-size: 0.65rem;
+            width: auto;
+            transition: top .3s ease-in-out;
+        }
+        .del-btn.active {
+            top: 102%;
+            // z-index: 999;
+        }
+        
+    }
+}
+
+h1 {
+    color: var(--color-primary);
+}
+
+.todo-list {
+    width: 90%;
+    max-width: 600px;
+    background-color: var(--color-white-alpha10);
+    border-radius: 0.5rem;
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        column-gap: 0.5rem;
+    }
+}
+
+.todo {
+    width: 90%;
+    max-width: 600px;
+    background-color: var(--color-white-alpha10);
+    border-radius: 0.5rem;
+    
+    &__container {
+        width: 100%;
+        background-color: var(--color-bg);
+        border-radius: 0.25rem;
+
+        display: grid;
+        grid-template-columns: 1fr auto auto auto;
+        align-items: center;
+        column-gap: 0.5rem;
+    }
+
+    &__title {
+        height: 100%;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        border-radius: 2px;
+        font-size: 0.95rem;
+        color: currentColor;
+        cursor: default;
+        transition: 
+            padding-left .5s ease, 
+            box-shadow .5s ease;
+    }
+
+    &__checkbox-container {
+        height: 1.5rem;
+        width: 1.5rem;
+        position: relative;
+        display: grid;
+        place-items: center;
+
+        .checkbox {
+            height: 50%;
+            width: 50%;
+            visibility: hidden;
+        }
+        .checkbox-label {
+            // display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: transparent;
+            border-radius: 4px;
+            color: rgba(255, 255, 255, 0.2);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+
+            transition: all .2s ease, visibility 0s;
+
+            &:hover {
+                box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
+                color: rgba(255, 255, 255, 0.5);
+            }
+        }
+        .checkbox-label.active {
+            background-color: var(--color-primary);
+            color: var(--color-text);
+            box-shadow: none;
+        }
+    }
+
+}
+
+.toggler {
+    cursor: text;
+    padding-left: 0.5em;
+    box-shadow: inset 0 -2px 0 rgba(49, 162, 184, 0.4);
+}
+
+.toggler ~ .todo__checkbox-container {
+    visibility: hidden;
+}
