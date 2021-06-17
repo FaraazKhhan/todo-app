@@ -23,13 +23,14 @@ function Navbar(props) {
         <div className="navbar__info-container">
             <p className="mr-1">Total: <span>{totalTodos}</span></p>
             <p>Completed: <span>{totalComplete}</span></p>
-
-            <button type="button"
+        </div>
+        <div className="del-btn-container">
+          <button type="button"
             className={`btn btn-warning btn-sm del-btn ${totalComplete > 0 ? 'active' : '' }`}
             onClick={deleteCompletedTasks}
-        >
+          >
             <FaTrash className="mr-05" /> All Completed Tasks
-        </button>
+          </button>
         </div>
       </nav>
     </header>

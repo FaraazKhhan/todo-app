@@ -32,7 +32,6 @@ body {
     &__info-container {
         height: inherit;
         display: flex;
-        position: relative;
         
         p {
             display: flex;
@@ -51,24 +50,33 @@ body {
             font-weight: 600;
             color: var(--color-warning-400);
         }
+        
+    }
 
-        // z-index: 99;
+    position: relative;
+
+    .del-btn-container {
+        position: absolute;
+        top: 102%;
+        right: 0;
+        background-color: transparent;
+        width: 50%;
+        height: 2rem;
+        overflow-y: hidden;
+
         .del-btn {
             width: 100%;
             position: absolute;
-            top: 0%;
+            top: -102%;
             right: 0%;
-            z-index: -1;
             transform: translateX(0%);
             font-size: 0.65rem;
             width: auto;
             transition: top .3s ease-in-out;
         }
         .del-btn.active {
-            top: 102%;
-            // z-index: 999;
+            top: 0;
         }
-        
     }
 }
 
