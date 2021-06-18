@@ -9,7 +9,7 @@
 }
 
 * {
-    font-size: 12px;
+    font-size: 13.5px;
 }
 
 h1 {
@@ -21,25 +21,24 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     overflow-x: hidden;
+    padding-bottom: 2em;
 }
 
 .header {
     height: 10vh;
-    min-height: 80px;
-    max-height: 80px;
+    max-height: 66px;
     background-color: hsl(240, 20%, 5%);
+
+    display: flex;
+    align-items: center;
 }
 
 .navbar {
-    height: inherit;
     width: 90%;
     max-width: 600px;
 
     display: flex;
-    align-items: center;
     justify-content: space-between;
-
-    position: relative;
 
     &__info-container {
         height: inherit;
@@ -62,32 +61,28 @@ body {
             font-weight: 600;
             color: var(--color-warning-400);
         }
-        
     }
 
-    .del-btn-container {
+    position: relative;
+
+    &__del-btn {
+        visibility: hidden;
+        opacity: 0;
+        width: 100%;
         position: absolute;
-        top: 102%;
-        right: 0;
-        background-color: transparent;
-        width: 50%;
-        height: 2rem;
-        overflow-y: hidden;
-
-        .del-btn {
-            width: 100%;
-            position: absolute;
-            top: -102%;
-            right: 0%;
-            transform: translateX(0%);
-            font-size: 0.65rem;
-            width: auto;
-            transition: top .3s ease-in-out;
-        }
-        .del-btn.active {
-            top: 0;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, 100%);
+        font-size: 0.65rem;
+        width: fit-content;
+        transition: visibility .3s ease-in-out, opacity .3s ease-in-out;
+        
+        &.active {
+            visibility: visible;
+            opacity: 1;
         }
     }
+    
 }
     
 .todo-list {
@@ -211,6 +206,7 @@ body {
     max-width: 200px;
     background-color: var(--color-danger-400);
     color: #fff;
+    font-size: 0.75rem;
     font-weight: 600;
     text-align: center;
     padding: 0.25em 2em;
@@ -249,7 +245,7 @@ body {
 
 @media screen and (min-width: 601px) {
     * {
-        font-size: 14px;
+        font-size: 15.5px;
     }
 }
 
@@ -257,7 +253,7 @@ body {
 
 @media screen and (min-width: 961px) {
     * {
-        font-size: 16px;
+        font-size: 16.5px;
     }
 }
 

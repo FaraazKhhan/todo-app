@@ -24,14 +24,13 @@ function Navbar(props) {
             <p className="mr-1">Total: <span>{totalTodos}</span></p>
             <p>Completed: <span>{totalComplete}</span></p>
         </div>
-        <div className="del-btn-container">
-          <button type="button"
-            className={`btn btn-warning btn-sm del-btn ${totalComplete > 0 ? 'active' : '' }`}
-            onClick={deleteCompletedTasks}
-          >
-            <FaTrash className="mr-05" /> All Completed Tasks
-          </button>
-        </div>
+
+        <button type="button"
+          className={`btn btn-warning btn-sm navbar__del-btn ${totalComplete > 0 ? 'active' : '' }`}
+          onClick={deleteCompletedTasks}
+        >
+          <FaTrash className="mr-05" /> All Completed Tasks
+        </button>
       </nav>
     </header>
   );

@@ -79,6 +79,7 @@ function TodoList({todos, setTodo}) {
                         onChange={handleInput} 
                         className="form-control-dark" 
                         placeholder="Enter your plan" 
+                        onBlur={() => tooltipRef.current.classList.remove('active')}
                     />
                     <button type="submit" className="btn btn-primary btn-sm">
                     <FaPlus className="mr-05"/> Add
