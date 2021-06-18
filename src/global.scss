@@ -8,15 +8,25 @@
     --color-warning-400: #FEC134;
 }
 
+* {
+    font-size: 12px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
 body {
     background-color: var(--color-bg);
     color: var(--color-text);
-    font-size: 12px;
     overflow-x: hidden;
 }
 
 .header {
     height: 10vh;
+    min-height: 80px;
+    max-height: 80px;
     background-color: hsl(240, 20%, 5%);
 }
 
@@ -28,6 +38,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    position: relative;
 
     &__info-container {
         height: inherit;
@@ -53,8 +65,6 @@ body {
         
     }
 
-    position: relative;
-
     .del-btn-container {
         position: absolute;
         top: 102%;
@@ -79,11 +89,7 @@ body {
         }
     }
 }
-
-h1 {
-    color: var(--color-primary);
-}
-
+    
 .todo-list {
     width: 90%;
     max-width: 600px;
@@ -102,6 +108,7 @@ h1 {
     max-width: 600px;
     background-color: var(--color-white-alpha10);
     border-radius: 0.5rem;
+    animation: fallToDown .5s ease;
     
     &__container {
         width: 100%;
@@ -126,6 +133,15 @@ h1 {
         transition: 
             padding-left .5s ease, 
             box-shadow .5s ease;
+
+        &.active {
+            cursor: text;
+            padding-left: 0.5em;
+            box-shadow: inset 0 -2px 0 rgba(49, 162, 184, 0.4);
+        }
+        &.active ~ .todo__checkbox-container {
+            visibility: hidden;
+        }
     }
 
     &__checkbox-container {
@@ -141,7 +157,6 @@ h1 {
             visibility: hidden;
         }
         .checkbox-label {
-            // display: none;
             position: absolute;
             top: 0;
             left: 0;
@@ -171,12 +186,103 @@ h1 {
 
 }
 
-.toggler {
-    cursor: text;
-    padding-left: 0.5em;
-    box-shadow: inset 0 -2px 0 rgba(49, 162, 184, 0.4);
+// extra classes
+.form-error {
+    border-color: var(--color-danger-400);
+    animation: vibrate .3s ease;
+
+    &::placeholder {
+        color: var(--color-danger-400);
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 2.5px rgba(220, 65, 70, 0.5);
+    }
 }
 
-.toggler ~ .todo__checkbox-container {
-    visibility: hidden;
+.todo-list__container {
+    position: relative;
+    // height: 100%;
+}
+
+.tooltip {
+    display: none;
+    width: fit-content;
+    max-width: 200px;
+    background-color: var(--color-danger-400);
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.25em 2em;
+    border-radius: 4px;
+    transform: translateY(30%);
+    transition: display .3s ease;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    &::before {
+        content: '';
+        display: inline-block;
+        background-color: transparent;
+        height: 10px;
+        width: 10px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid var(--color-danger-400);
+
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -90%);  
+    }
+
+    &.active {
+        display: block;
+    }
+}
+
+
+@media screen and (min-width: 601px) {
+    * {
+        font-size: 14px;
+    }
+}
+
+
+
+@media screen and (min-width: 961px) {
+    * {
+        font-size: 16px;
+    }
+}
+
+
+
+// Keyframes 
+@keyframes fallToDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes vibrate {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    20%, 60% {
+        transform: translateX(2%);
+    }
+    40%, 80% {
+        transform: translateX(-2%);
+    }
 }

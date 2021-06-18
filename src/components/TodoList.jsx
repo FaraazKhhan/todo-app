@@ -5,27 +5,41 @@ import Todo from './Todo';
 
 function TodoList({todos, setTodo}) {
     const [newTodo, setNewTodo] = useState(null)    
+    const [errorMsg, setErrorMsg] = useState(null)
     const inputRef = useRef();
+    const tooltipRef = useRef()
 
     function handleInput(e) {
         setNewTodo(e.target.value)
+        tooltipRef.current.classList.remove('active')
     }
     
     function handleSubmit(e) {
         e.preventDefault()
 
         const regex = new RegExp(/^\s+/g)
+        const _regex = new RegExp(/^\s+([A-z0-9])/g)
         // Preventing empty task with whitespace to be added...
         if(regex.test(newTodo)) {
-            alert('Empty task no allowed!')
+            if(_regex.test(newTodo)) {
+                setNewTodo(newTodo.replace(/^\s+/g, ''))
+                setTodo(currentValue => [...currentValue, {
+                    id: uuid(),
+                    title: newTodo,
+                    isComplete: false
+                }])
+            }
+            else {
+                inputError('Empty task not allowed!')
+            }
         } else {
             // Preventing duplicate task to be added...
             if(todos.find(todo => todo.title === newTodo)) {
-                alert('Todo already exist with same title, try different');
+                inputError('Same task already exist, try different')
             } else {
                 // Preventing empty task to be added...
                 if(!newTodo) {
-                    alert('Write something...')
+                    inputError('Write something...')
                 } else {
                     setTodo(currentValue => [...currentValue, {
                         id: uuid(),
@@ -39,8 +53,13 @@ function TodoList({todos, setTodo}) {
         setNewTodo('')
     }
 
-    function handleDelete(e) {
-        setTodo(todos.filter(item => item.id !== e.currentTarget.id))
+    function inputError(message) {
+        inputRef.current.classList.add('form-error')
+        setErrorMsg(message)
+        tooltipRef.current.classList.add('active')
+        setTimeout(() => {
+            inputRef.current.classList.remove('form-error')
+        }, 300)
     }
     
     useEffect(() => {
@@ -64,8 +83,9 @@ function TodoList({todos, setTodo}) {
                     <button type="submit" className="btn btn-primary btn-sm">
                     <FaPlus className="mr-05"/> Add
                     </button>
-                </form>
 
+                    <div ref={tooltipRef} className="tooltip">{errorMsg}</div>
+                </form>
             </div>
             {
                 todos && todos.map((todo) => (
@@ -74,7 +94,6 @@ function TodoList({todos, setTodo}) {
                         id={todo.id} 
                         title={todo.title} 
                         isComplete={todo.isComplete} 
-                        handleDelete={handleDelete}
                         todos={todos}
                         setTodo={setTodo}
                     />

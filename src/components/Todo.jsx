@@ -4,7 +4,6 @@ import { FaEdit, FaTrash, FaSave, FaCheck } from 'react-icons/fa'
 function Todo(props) {
     const [isReadOnly, setReadOnly] = useState(true)
     const [modifiedTodo, setModifiedTodo] = useState(null)
-
     const [changeStyle, setChangeStyle] = useState(false)
 
     const inputRef = useRef()
@@ -31,12 +30,16 @@ function Todo(props) {
         }
     }
 
+    function handleDelete(e) {
+        props.setTodo(props.todos.filter(item => item.id !== e.currentTarget.id))
+    }
+
     return (
         <div className="todo p-1 mx-auto mt-1">
             <div className="todo__container py-1 px-2">
                 <input type="text"
                     ref={inputRef}
-                    className={`todo__title ${changeStyle ? 'toggler' : ''}`}
+                    className={`todo__title ${changeStyle ? 'active' : ''}`}
                     defaultValue={props.title}
                     readOnly={isReadOnly}
                     onChange={handleInput}
@@ -57,6 +60,7 @@ function Todo(props) {
                     </label>
                 </div>
                 
+                 {/* Edit button */}
                 <button type="button" 
                     className={`btn btn-info btn-sm ${changeStyle ? 'btn-success' : ''}`}
                     id={props.id} 
@@ -65,10 +69,11 @@ function Todo(props) {
                     {!changeStyle ? <FaEdit /> : <><FaSave className="mr-05" />Save</>}
                 </button>
 
+                {/* Delete button */}
                 <button type="button" 
                     className="btn btn-danger btn-sm"
                     id = {props.id}
-                    onClick={props.handleDelete}
+                    onClick={handleDelete}
                 >
                     <FaTrash />
                 </button>
