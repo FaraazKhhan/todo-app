@@ -40,6 +40,21 @@ body {
     display: flex;
     justify-content: space-between;
 
+    &__logo {
+        color: #DC4146;
+        position: relative;
+        padding-left: 0.4em;
+        font-size: 1.35rem;
+
+        &::before {
+            content: 'P';
+            color: #FEC134;
+            transform: scale(-1, 1);
+            position: absolute;
+            left: 0;
+        }
+    }
+
     &__info-container {
         height: inherit;
         display: flex;

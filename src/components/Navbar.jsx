@@ -18,7 +18,7 @@ function Navbar(props) {
     <header className="header">
 
       <nav className="navbar mx-auto">
-        <h3 className="navbar__logo">Todo App</h3>
+        <h3 className="navbar__logo">Planno</h3>
 
         <div className="navbar__info-container">
             <p className="mr-1">Total: <span>{totalTodos}</span></p>

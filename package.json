@@ -1,6 +1,10 @@
 {
-  "name": "todo-app",
-  "version": "0.0.0",
+  "name": "planno",
+  "description": "planno is a todo-app created using react",
+  "version": "1.0.0",
+  "author": "Faraaz Khhan",
+  "repository": "https://github.com/FaraazKhhan/todo-app",
+  "license": "ISC",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
