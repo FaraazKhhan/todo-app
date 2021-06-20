@@ -4,7 +4,6 @@
 *   Date:       13-June-2021
 **********************************************/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 *,
 *::before,
 *::before {
@@ -579,7 +578,7 @@ textarea.form-control-dark {
 
 .btn-primary {
   background-color: var(--color-primary-400);
-  color: var(--color-white-200);
+  color: var(--color-white-100);
 }
 
 .btn-primary:hover {
@@ -634,7 +633,7 @@ textarea.form-control-dark {
 
 .btn-danger {
   background-color: var(--color-danger-400);
-  color: var(--color-white-200);
+  color: var(--color-white-100);
 }
 
 .btn-danger:hover {
@@ -652,7 +651,7 @@ textarea.form-control-dark {
 
 .btn-mute {
   background-color: var(--color-mute-400);
-  color: var(--color-white-200);
+  color: var(--color-white-100);
 }
 
 .btn-mute:hover {
@@ -670,7 +669,7 @@ textarea.form-control-dark {
 
 .btn-info {
   background-color: var(--color-info-400);
-  color: var(--color-white-200);
+  color: var(--color-white-100);
 }
 
 .btn-info:hover {
@@ -688,7 +687,7 @@ textarea.form-control-dark {
 
 .btn-success {
   background-color: var(--color-success-400);
-  color: var(--color-white-200);
+  color: var(--color-white-100);
 }
 
 .btn-success:hover {

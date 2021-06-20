@@ -93,6 +93,12 @@ h1.heading {
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
+        color: #efefef;
+
+        &:hover {
+            color: var(--color-text);
+        }
     }
 
     position: relative;
