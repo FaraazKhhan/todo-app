@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { FaTrash } from 'react-icons/fa'
+import { RiMenuFoldLine, RiMenuUnfoldLine } from 'react-icons/ri'
 
 function Navbar(props) {
   const [totalTodos, setTotalTodos] = useState(props.todos.length)
@@ -7,6 +8,10 @@ function Navbar(props) {
 
   function deleteCompletedTasks() {
     props.setTodo(props.todos.filter(item => item.isComplete !== true));
+  }
+
+  function handleMenuBtn() {
+    props.setMenuClicked(!props.menuClicked)
   }
   
   useEffect(() => {
@@ -23,6 +28,10 @@ function Navbar(props) {
         <div className="navbar__info-container">
             <p className="mr-1">Total: <span>{totalTodos}</span></p>
             <p>Completed: <span>{totalComplete}</span></p>
+        </div>
+
+        <div className="navbar__menu-btn" onClick={handleMenuBtn}>
+          {props.menuClicked ? <RiMenuUnfoldLine style={{fontSize: '1.5rem'}} /> : <RiMenuFoldLine style={{fontSize: '1.5rem'}} />}
         </div>
 
         <button type="button"

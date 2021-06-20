@@ -12,16 +12,20 @@
     font-size: 13.5px;
 }
 
-h1 {
-    font-size: 2rem;
-    color: var(--color-primary);
-}
-
 body {
     background-color: var(--color-bg);
     color: var(--color-text);
-    overflow-x: hidden;
     padding-bottom: 2em;
+}
+
+.App {
+    overflow-x: hidden;
+    padding-top: 10vh;
+}
+
+h1.heading {
+    font-size: 2rem;
+    color: var(--color-primary);
 }
 
 .header {
@@ -31,6 +35,13 @@ body {
 
     display: flex;
     align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+
 }
 
 .navbar {
@@ -78,6 +89,12 @@ body {
         }
     }
 
+    &__menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     position: relative;
 
     &__del-btn {
@@ -97,6 +114,101 @@ body {
             opacity: 1;
         }
     }
+    
+}
+
+.menu {
+    position: fixed;
+    top: 10%;
+    bottom: 0;
+    right: 0;
+    transform: translateX(100%);
+    background-color: hsl(240, 20%, 15%);
+    z-index: 999;
+    min-height: calc(100vh - 10%);
+    width: 80%;
+    max-width: 300px;
+    box-shadow: -15px 0 30px rgba(0, 0, 0, 0.25);
+
+    transition: transform .3s ease-in;
+
+    &__container {
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    &.active {
+        transform: translateX(0);
+    }
+
+    &__image {
+        width: 100px;
+    }
+
+    &__about {
+        text-align: center;
+
+        h1 {
+            font-size: 1.75rem;
+            margin-top: 0.5em;
+            color: var(--color-danger-400);
+        }
+        h2 {
+            font-size: 1.2rem;
+            margin-top: 0.35em;
+        }
+        p {
+            color: rgba(255, 255, 255, 0.75);
+            margin-top: 0.65em;
+            padding: 0 2em;
+
+            span {
+                display: block;
+                font-weight: 500;
+                color: #fff;
+            }
+        }
+    }
+
+    &__nav {
+
+        p {
+            font-size: 0.85rem;
+            margin-bottom: 0.5em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        a {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 600;
+            
+            &:not(:last-of-type) {
+                margin-bottom: 1em;
+            }
+
+            &:hover,
+            &:focus {
+                outline: none;
+                color: rgba(255, 255, 255);
+            }
+        }
+    }
+
+    &__social-container {
+        color: rgba(255, 255, 255, 0.455);
+        
+        a:hover,
+        a:focus {
+            outline: none;
+            color: var(--color-danger-400);
+        }
+    }
+
     
 }
     
@@ -269,6 +381,13 @@ body {
 @media screen and (min-width: 961px) {
     * {
         font-size: 16.5px;
+    }
+    .menu {
+        box-shadow: unset;
+
+        p, strong, span {
+        font-size: 0.75rem;
+        }
     }
 }
 

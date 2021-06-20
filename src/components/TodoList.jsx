@@ -61,7 +61,7 @@ function TodoList({todos, setTodo}) {
             inputRef.current.classList.remove('form-error')
         }, 300)
     }
-    
+
     useEffect(() => {
         inputRef.current.focus()
     }, [])
